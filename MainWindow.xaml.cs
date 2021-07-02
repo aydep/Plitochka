@@ -24,5 +24,16 @@ namespace Plitochka
         {
             InitializeComponent();
         }
+
+        private void button_left_Click(object sender, RoutedEventArgs e)
+        {
+            Canvas.SetLeft(plit1, Canvas.GetLeft(plit1)-40);
+        }
+
+        private void button_right_Click(object sender, RoutedEventArgs e)
+        {
+            Canvas.SetLeft(plit1, Canvas.GetLeft(plit1) + 40);
+
+        }
     }
 }

@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Plitochka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800" >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="400"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Canvas x:Name="canv" Grid.Row="1" Grid.Column="1">
+            <Rectangle x:Name="plit1" Fill="Red" Width="40" Height="80" Canvas.Left="80"/>
+            <Rectangle x:Name="plit2" Fill="Blue" Width="80" Height="40"/>
+        </Canvas>
+        
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Width="400" HorizontalAlignment="Center">
+            <Button x:Name="button_left" Content="&lt;" Width="200" Click="button_left_Click"/>
+            <Button x:Name="button_right" Content=">" Width="200" Click="button_right_Click"/>
+        </StackPanel>
+         
 
     </Grid>
 </Window>
