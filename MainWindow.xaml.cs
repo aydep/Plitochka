@@ -25,27 +25,22 @@ namespace Plitochka
             InitializeComponent();
         }
 
-        bool pli_focus = false;
+        string focused_plit;
 
         private void button_left_Click(object sender, RoutedEventArgs e)
         {
-            if (pli_focus)
-            {
-                Canvas.SetLeft(plit1, Canvas.GetLeft(plit1) - 40);
-            }
+            Canvas.SetLeft((UIElement)focused_plit, Canvas.GetLeft(plit1) - 40);
         }
 
         private void button_right_Click(object sender, RoutedEventArgs e)
         {
-            if (pli_focus)
-            {
                 Canvas.SetLeft(plit1, Canvas.GetLeft(plit1) + 40);
-            }
         }
 
-        public void plit1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        public void Plit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            pli_focus = true;
+            focused_plit = ((Rectangle)e.OriginalSource).Name;
+            tehta.Text = focused_plit;
         }
     }
 }

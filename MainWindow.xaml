@@ -18,9 +18,11 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <TextBlock x:Name="tehta"/>
+
         <Canvas x:Name="canv" Grid.Row="1" Grid.Column="1">
-            <Rectangle x:Name="plit1" Fill="Red" Width="40" Height="80" Canvas.Left="80" MouseLeftButtonDown="plit1_MouseLeftButtonDown"/>
-            <Rectangle x:Name="plit2" Fill="Blue" Width="80" Height="40"/>
+            <Rectangle x:Name="plit1" Fill="Red" Width="40" Height="80" Canvas.Left="80" MouseLeftButtonDown="Plit_MouseLeftButtonDown"/>
+            <Rectangle x:Name="plit2" Fill="Blue" Width="80" Height="40" MouseLeftButtonDown="Plit_MouseLeftButtonDown"/>
         </Canvas>
         
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Width="400" HorizontalAlignment="Center">
