@@ -22,12 +22,14 @@
 
         <Canvas x:Name="canv" Grid.Row="1" Grid.Column="1">
             <Rectangle x:Name="plit1" Fill="Red" Width="40" Height="80" Canvas.Left="80" MouseLeftButtonDown="Plit_MouseLeftButtonDown"/>
-            <Rectangle x:Name="plit2" Fill="Blue" Width="80" Height="40" MouseLeftButtonDown="Plit_MouseLeftButtonDown"/>
+            <Rectangle x:Name="plit2" Fill="Blue" Width="80" Height="40" Canvas.Left="0" MouseLeftButtonDown="Plit_MouseLeftButtonDown"/>
         </Canvas>
         
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Width="400" HorizontalAlignment="Center">
-            <Button x:Name="button_left" Content="&lt;" Width="200" Click="button_left_Click"/>
-            <Button x:Name="button_right" Content=">" Width="200" Click="button_right_Click"/>
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Width="800" HorizontalAlignment="Center">
+            <Button x:Name="button_left" Content="left;" Width="200" Click="button_left_Click"/>
+            <Button x:Name="button_right" Content="right" Width="200" Click="button_right_Click"/>
+            <Button x:Name="button_rotate_left" Content="RL" Width="200" Click="button_rotate_left_Click"/>
+            <Button x:Name="button_rotate_right" Content="RL" Width="200" Click="button_rotate_right_Click"/>
         </StackPanel>
          
 
