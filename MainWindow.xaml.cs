@@ -28,6 +28,9 @@ namespace Plitochka
         string focused_plit;
         UIElement focused_plit_el;
 
+        Random rnd = new Random();
+        Brush customColor;
+
         private void button_left_Click(object sender, RoutedEventArgs e)
         {
             Canvas.SetLeft(focused_plit_el, Canvas.GetLeft(focused_plit_el) - 40);
@@ -35,7 +38,7 @@ namespace Plitochka
 
         private void button_right_Click(object sender, RoutedEventArgs e)
         {
-            Canvas.SetLeft(focused_plit_el, Canvas.GetLeft(focused_plit_el) + 40);
+            Canvas.SetLeft(focused_plit_el, Canvas.GetLeft(focused_plit_el) + 40);   
         }
 
         public void Plit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -47,14 +50,25 @@ namespace Plitochka
 
         private void button_rotate_left_Click(object sender, RoutedEventArgs e)
         {
-            Style stbt = new Style();
-            stbt.Setters.Add(new Setter { Property = Control.WidthProperty, Value = 100});
-            focused_plit.Style = stbt;
+            canv.Children.Remove(focused_plit_el);
         }
 
         private void button_rotate_right_Click(object sender, RoutedEventArgs e)
         {
+            customColor = new SolidColorBrush(Color.FromRgb((byte)rnd.Next(1,255), (byte)rnd.Next(1, 255), (byte)rnd.Next(1, 255)));
 
+            Rectangle newRectangle = new Rectangle
+            {
+                Width = 80,
+                Height = 40,
+                Fill = customColor,
+                Name = "plit" + (canv.Children.Count+1)
+            };
+
+            Canvas.SetLeft(newRectangle, rnd.Next(1, 400));
+            Canvas.SetTop(newRectangle, rnd.Next(1, 400));
+
+            canv.Children.Add(newRectangle);
         }
     }
 }
