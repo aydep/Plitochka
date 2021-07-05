@@ -43,32 +43,64 @@ namespace Plitochka
 
         public void Plit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            focused_plit = ((Rectangle)e.OriginalSource).Name;
+            focused_plit = ((Border)e.OriginalSource).Name;
             tehta.Text = focused_plit;
-            focused_plit_el = (UIElement)LogicalTreeHelper.FindLogicalNode(canv, focused_plit);
+            focused_plit_el = (UIElement)LogicalTreeHelper.FindLogicalNode(setkaPlitki, focused_plit);
         }
 
         private void button_rotate_left_Click(object sender, RoutedEventArgs e)
         {
-            canv.Children.Remove(focused_plit_el);
+            Grid.SetRow(focused_plit_el, 2);
+            Grid.SetRowSpan(focused_plit_el, 2);
         }
 
-        private void button_rotate_right_Click(object sender, RoutedEventArgs e)
+        private void button_rotate_Click(object sender, RoutedEventArgs e)
         {
-            customColor = new SolidColorBrush(Color.FromRgb((byte)rnd.Next(1,255), (byte)rnd.Next(1, 255), (byte)rnd.Next(1, 255)));
+            var rowSpan = Grid.GetRowSpan(focused_plit_el);
+            var columnSpan = Grid.GetColumnSpan(focused_plit_el);
 
-            Rectangle newRectangle = new Rectangle
+            Grid.SetRowSpan(focused_plit_el, columnSpan);
+            Grid.SetColumnSpan(focused_plit_el, rowSpan);
+        }
+
+        private void button_up_Click(object sender, RoutedEventArgs e)
+        {
+            var row = Grid.GetRow(focused_plit_el);
+            
+            if (row > 0) { Grid.SetRow(focused_plit_el, row - 1); }
+        }
+
+        private void button_down_Click(object sender, RoutedEventArgs e)
+        {
+            var row = Grid.GetRow(focused_plit_el);
+
+            if (row < 10) { Grid.SetRow(focused_plit_el, row + 1); }
+        }
+
+        private void button_add_Click(object sender, RoutedEventArgs e)
+        {
+            customColor = new SolidColorBrush(Color.FromRgb((byte)rnd.Next(1, 255), (byte)rnd.Next(1, 255), (byte)rnd.Next(1, 255)));
+
+            Border newBorder = new Border
             {
                 Width = 80,
                 Height = 40,
-                Fill = customColor,
-                Name = "plit" + (canv.Children.Count+1)
+                Background = customColor,
+                Name = "plit" + (setkaPlitki.Children.Count + 1)
             };
 
-            Canvas.SetLeft(newRectangle, rnd.Next(1, 400));
-            Canvas.SetTop(newRectangle, rnd.Next(1, 400));
+            MessageBox.Show(setkaPlitki.Children.Count.ToString());
 
-            canv.Children.Add(newRectangle);
+            MessageBox.Show(newBorder.Name);
+
+            setkaPlitki.Children.Add(newBorder);
+
+            MessageBox.Show(setkaPlitki.Children.Count.ToString());
+        }
+
+        private void button_del_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

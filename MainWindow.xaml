@@ -20,17 +20,58 @@
 
         <TextBlock x:Name="tehta"/>
 
-        <Canvas x:Name="canv" Grid.Row="1" Grid.Column="1">
-            <Rectangle x:Name="plit1" Fill="Red" Width="40" Height="80" Canvas.Left="80" MouseLeftButtonDown="Plit_MouseLeftButtonDown"/>
-            <Rectangle x:Name="plit2" Fill="Blue" Width="80" Height="40" Canvas.Left="0" MouseLeftButtonDown="Plit_MouseLeftButtonDown"/>
-        </Canvas>
+        <Grid x:Name="setkaPlitki" Grid.Column="1" Grid.Row="1" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="pliotchka" Background="#000000" MouseLeftButtonDown="Plit_MouseLeftButtonDown"></Border>
+
+        </Grid>
+
         
-        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Width="800" HorizontalAlignment="Center">
-            <Button x:Name="button_left" Content="left;" Width="200" Click="button_left_Click"/>
-            <Button x:Name="button_right" Content="right" Width="200" Click="button_right_Click"/>
-            <Button x:Name="button_rotate_left" Content="RL" Width="200" Click="button_rotate_left_Click"/>
-            <Button x:Name="button_rotate_right" Content="RL" Width="200" Click="button_rotate_right_Click"/>
-        </StackPanel>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="800" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="button_left" Content="left" Click="button_left_Click"/>
+            <Button x:Name="button_right" Grid.Column="1" Content="right" Click="button_right_Click"/>
+            <Button x:Name="button_rotate" Grid.Column="2" Content="Rotate" Click="button_rotate_Click"/>
+            <StackPanel Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Button x:Name="button_add" Click="button_add_Click" Content="Add" Height="46"/>
+                <Button x:Name="button_del" Click="button_del_Click" Content="Delete" Height="46"/>
+            </StackPanel>
+            <Button x:Name="button_up" Grid.Column="4" Content="up" Click="button_up_Click"/>
+            <Button x:Name="button_down" Grid.Column="5" Content="down" Click="button_down_Click"/>
+            
+        </Grid>
          
 
     </Grid>
