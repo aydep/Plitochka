@@ -33,12 +33,17 @@ namespace Plitochka
 
         private void button_left_Click(object sender, RoutedEventArgs e)
         {
-            Canvas.SetLeft(focused_plit_el, Canvas.GetLeft(focused_plit_el) - 40);
+            var column = Grid.GetColumn(focused_plit_el);
+            
+            if (column > 0) { Grid.SetColumn(focused_plit_el, column - 1); }
         }
 
         private void button_right_Click(object sender, RoutedEventArgs e)
         {
-            Canvas.SetLeft(focused_plit_el, Canvas.GetLeft(focused_plit_el) + 40);   
+            var columnSpan = Grid.GetColumnSpan(focused_plit_el);
+            var column = Grid.GetColumn(focused_plit_el);
+
+            if (column < (10-columnSpan)) { Grid.SetColumn(focused_plit_el, column + 1); }
         }
 
         public void Plit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -46,12 +51,6 @@ namespace Plitochka
             focused_plit = ((Border)e.OriginalSource).Name;
             tehta.Text = focused_plit;
             focused_plit_el = (UIElement)LogicalTreeHelper.FindLogicalNode(setkaPlitki, focused_plit);
-        }
-
-        private void button_rotate_left_Click(object sender, RoutedEventArgs e)
-        {
-            Grid.SetRow(focused_plit_el, 2);
-            Grid.SetRowSpan(focused_plit_el, 2);
         }
 
         private void button_rotate_Click(object sender, RoutedEventArgs e)
@@ -73,8 +72,9 @@ namespace Plitochka
         private void button_down_Click(object sender, RoutedEventArgs e)
         {
             var row = Grid.GetRow(focused_plit_el);
+            var rowSpan = Grid.GetRowSpan(focused_plit_el);
 
-            if (row < 10) { Grid.SetRow(focused_plit_el, row + 1); }
+            if (row < (10-rowSpan)) { Grid.SetRow(focused_plit_el, row + 1); }
         }
 
         private void button_add_Click(object sender, RoutedEventArgs e)
