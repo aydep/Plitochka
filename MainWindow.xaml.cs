@@ -33,17 +33,23 @@ namespace Plitochka
 
         private void button_left_Click(object sender, RoutedEventArgs e)
         {
-            var column = Grid.GetColumn(focused_plit_el);
-            
-            if (column > 0) { Grid.SetColumn(focused_plit_el, column - 1); }
+            if (focused_plit_el != null)
+            {
+                var column = Grid.GetColumn(focused_plit_el);
+
+                if (column > 0) { Grid.SetColumn(focused_plit_el, column - 1); }
+            }
         }
 
         private void button_right_Click(object sender, RoutedEventArgs e)
         {
-            var columnSpan = Grid.GetColumnSpan(focused_plit_el);
-            var column = Grid.GetColumn(focused_plit_el);
+            if (focused_plit_el != null)
+            {
+                var columnSpan = Grid.GetColumnSpan(focused_plit_el);
+                var column = Grid.GetColumn(focused_plit_el);
 
-            if (column < (10-columnSpan)) { Grid.SetColumn(focused_plit_el, column + 1); }
+                if (column < (10 - columnSpan)) { Grid.SetColumn(focused_plit_el, column + 1); }
+            }
         }
 
         public void Plit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -64,17 +70,22 @@ namespace Plitochka
 
         private void button_up_Click(object sender, RoutedEventArgs e)
         {
-            var row = Grid.GetRow(focused_plit_el);
-            
-            if (row > 0) { Grid.SetRow(focused_plit_el, row - 1); }
+            if (focused_plit_el != null)
+            {
+                var row = Grid.GetRow(focused_plit_el);
+                if (row > 0) { Grid.SetRow(focused_plit_el, row - 1); }
+            }
         }
 
         private void button_down_Click(object sender, RoutedEventArgs e)
         {
-            var row = Grid.GetRow(focused_plit_el);
-            var rowSpan = Grid.GetRowSpan(focused_plit_el);
+            if (focused_plit_el != null)
+            {
+                var row = Grid.GetRow(focused_plit_el);
+                var rowSpan = Grid.GetRowSpan(focused_plit_el);
 
-            if (row < (10-rowSpan)) { Grid.SetRow(focused_plit_el, row + 1); }
+                if (row < (10 - rowSpan)) { Grid.SetRow(focused_plit_el, row + 1); }
+            }
         }
 
         private void button_add_Click(object sender, RoutedEventArgs e)
@@ -83,20 +94,15 @@ namespace Plitochka
 
             Border newBorder = new Border
             {
-                Width = 80,
-                Height = 40,
                 Background = customColor,
-                Name = "plit" + (setkaPlitki.Children.Count + 1)
+                Name = "plitka" + (setkaPlitki.Children.Count + 1) 
             };
 
-            MessageBox.Show(setkaPlitki.Children.Count.ToString());
-
-            MessageBox.Show(newBorder.Name);
+            newBorder.MouseLeftButtonDown += Plit_MouseLeftButtonDown;
 
             setkaPlitki.Children.Add(newBorder);
-
-            MessageBox.Show(setkaPlitki.Children.Count.ToString());
         }
+        
 
         private void button_del_Click(object sender, RoutedEventArgs e)
         {

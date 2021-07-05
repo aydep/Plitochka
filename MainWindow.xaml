@@ -60,16 +60,19 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
-            <Button x:Name="button_left" Content="left" Click="button_left_Click"/>
-            <Button x:Name="button_right" Grid.Column="1" Content="right" Click="button_right_Click"/>
-            <Button x:Name="button_rotate" Grid.Column="2" Content="Rotate" Click="button_rotate_Click"/>
-            <StackPanel Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <Button x:Name="button_add" Click="button_add_Click" Content="Add" Height="46"/>
-                <Button x:Name="button_del" Click="button_del_Click" Content="Delete" Height="46"/>
-            </StackPanel>
-            <Button x:Name="button_up" Grid.Column="4" Content="up" Click="button_up_Click"/>
-            <Button x:Name="button_down" Grid.Column="5" Content="down" Click="button_down_Click"/>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="button_add" Grid.Column="0" Grid.Row="0" Click="button_add_Click" Content="Add"/>
+            <Button x:Name="button_del" Grid.Column="0" Grid.Row="1" Click="button_del_Click" Content="Delete"/>
+            <Button x:Name="button_rotate" Grid.Column="2" Grid.RowSpan="2" Content="Rotate" Click="button_rotate_Click"/>
+            <Button x:Name="button_left" Grid.Column="3" Grid.RowSpan="2" Content="left" Click="button_left_Click"/>
+            <Button x:Name="button_up" Grid.Column="4" Grid.Row="0" Content="up" Click="button_up_Click"/>
+            <Button x:Name="button_down" Grid.Column="4" Grid.Row="1" Content="down" Click="button_down_Click"/>
+            <Button x:Name="button_right" Grid.Column="5" Grid.RowSpan="2" Content="right" Click="button_right_Click"/>
+                       
             
         </Grid>
          
