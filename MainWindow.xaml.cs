@@ -36,7 +36,6 @@ namespace Plitochka
             if (focused_plit_el != null)
             {
                 var column = Grid.GetColumn(focused_plit_el);
-
                 if (column > 0) { Grid.SetColumn(focused_plit_el, column - 1); }
             }
         }
@@ -90,7 +89,21 @@ namespace Plitochka
 
         private void button_add_Click(object sender, RoutedEventArgs e)
         {
-            customColor = new SolidColorBrush(Color.FromRgb((byte)rnd.Next(1, 255), (byte)rnd.Next(1, 255), (byte)rnd.Next(1, 255)));
+
+            switch (colorList.Text)
+            {
+                case "Белый":
+                    customColor = new SolidColorBrush(Colors.White);
+                    break;
+                
+                case "Жёлтый":
+                    customColor = new SolidColorBrush(Colors.Yellow);
+                    break;
+                
+                case "Чёрный":
+                    customColor = new SolidColorBrush(Colors.Black);
+                    break;                
+            }
 
             Border newBorder = new Border
             {
@@ -101,12 +114,29 @@ namespace Plitochka
             newBorder.MouseLeftButtonDown += Plit_MouseLeftButtonDown;
 
             setkaPlitki.Children.Add(newBorder);
+
+            switch (formList.Text)
+            {
+                case "Кирпич":
+                    Grid.SetColumnSpan(newBorder, 1);
+                    Grid.SetRowSpan(newBorder, 2);
+                    break;
+
+                case "Квадрат большой":
+                    Grid.SetColumnSpan(newBorder, 2);
+                    Grid.SetRowSpan(newBorder, 2);
+                    break;
+
+                case "Квадрат маленький":
+                    Grid.SetColumnSpan(newBorder, 1);
+                    Grid.SetRowSpan(newBorder, 1);
+                    break;
+            }
         }
-        
 
         private void button_del_Click(object sender, RoutedEventArgs e)
         {
-
+            if (focused_plit_el != null) { setkaPlitki.Children.Remove(focused_plit_el); tehta.Text = ""; }
         }
     }
 }

@@ -46,8 +46,6 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Border x:Name="pliotchka" Background="#000000" MouseLeftButtonDown="Plit_MouseLeftButtonDown"></Border>
-
         </Grid>
 
         
@@ -65,8 +63,20 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="button_add" Grid.Column="0" Grid.Row="0" Click="button_add_Click" Content="Add"/>
-            <Button x:Name="button_del" Grid.Column="0" Grid.Row="1" Click="button_del_Click" Content="Delete"/>
+            <ComboBox x:Name="formList" Grid.Column="0" Grid.Row="0">
+                <ListBoxItem Content="Кирпич"/>
+                <ListBoxItem Content="Квадрат маленький"/>
+                <ListBoxItem Content="Квадрат большой"/>
+            </ComboBox>
+
+            <ComboBox x:Name="colorList" Grid.Column="0" Grid.Row="2">
+                <ListBoxItem Content="Белый"/>
+                <ListBoxItem Content="Жёлтый"/>
+                <ListBoxItem Content="Чёрный"/>
+            </ComboBox>
+            
+            <Button x:Name="button_add" Grid.Column="1" Grid.Row="0" Click="button_add_Click" Content="Add"/>
+            <Button x:Name="button_del" Grid.Column="1" Grid.Row="1" Click="button_del_Click" Content="Delete"/>
             <Button x:Name="button_rotate" Grid.Column="2" Grid.RowSpan="2" Content="Rotate" Click="button_rotate_Click"/>
             <Button x:Name="button_left" Grid.Column="3" Grid.RowSpan="2" Content="left" Click="button_left_Click"/>
             <Button x:Name="button_up" Grid.Column="4" Grid.Row="0" Content="up" Click="button_up_Click"/>
